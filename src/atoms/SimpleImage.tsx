@@ -6,10 +6,10 @@ type Props = {
 }
 
 const SimpleImage = ({ imageUrl, className }: Props) => {
-
+    const pictureClassName = `${className}-content`
     return (
-        <div className='card-picture'>
-            <img src={imageUrl} className={className}/>
+        <div className={className}>
+            <img src={imageUrl} className={pictureClassName}/>
         </div>
     )
 }
