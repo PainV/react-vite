@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { IMAGE } from './constants'
 import { getShips } from './services/graphql'
 
 type Ships = {
@@ -18,7 +19,7 @@ const App = () => {
 
   const renderTitle = (cardTitle: string) => {
     return (
-      <div className='card-title'>
+      <div className='card-header-title'>
         {cardTitle}
       </div>
     )
@@ -26,16 +27,17 @@ const App = () => {
 
   const renderSubtitle = (cardSubtitle: string) => {
     return (
-      <div className='card-subtitle'>
+      <div className='card-header-subtitle'>
         {cardSubtitle}
       </div>
     )
   }
 
   const renderPicture = (cardPicture: string) => {
+    const urlPicture = cardPicture ? cardPicture : IMAGE.FALLBACK_SHIP
     return (
       <div className='card-picture'>
-        <img src={cardPicture} className='card-picture'/>
+        <img src={urlPicture} className='card-picture'/>
       </div>
     )
   }
@@ -44,8 +46,10 @@ const App = () => {
     <div className="App">
       {ships.map((ship) => (
         <div className="ship" key={ship.id}>
-          {renderTitle(ship.name)}
-          {renderSubtitle(ship.type)}
+          <div className='card-header'>
+            {renderTitle(ship.name)}
+            {renderSubtitle(ship.type)}
+          </div>
           {renderPicture(ship.image)}
         </div>
       ))}
