@@ -18,6 +18,8 @@ export const getShips = () =>
           ships {
             name
             type
+            image
+            id
           }
         }
       `,

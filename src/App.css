@@ -14,3 +14,7 @@
   min-height: 200px;
   min-width: 200px;
 }
+
+.card-picture {
+  max-width: 250px;
+}
