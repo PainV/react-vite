@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import SimpleImage from './atoms/SimpleImage'
+import SimpleText from './atoms/SimpleText'
 import { IMAGE } from './constants'
 import { getShips } from './services/graphql'
 
@@ -19,19 +20,11 @@ const App = () => {
   })
 
   const renderTitle = (cardTitle: string) => {
-    return (
-      <div className='card-header-title'>
-        {cardTitle}
-      </div>
-    )
+    return <SimpleText text={cardTitle} className='card-header-title'/>
   }
 
   const renderSubtitle = (cardSubtitle: string) => {
-    return (
-      <div className='card-header-subtitle'>
-        {cardSubtitle}
-      </div>
-    )
+    return <SimpleText text={cardSubtitle} className='card-header-subtitle'/>
   }
 
   const renderPicture = (cardPicture: string) => {
