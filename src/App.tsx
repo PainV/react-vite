@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import SimpleImage from './atoms/SimpleImage'
 import { IMAGE } from './constants'
 import { getShips } from './services/graphql'
 
@@ -35,11 +36,7 @@ const App = () => {
 
   const renderPicture = (cardPicture: string) => {
     const urlPicture = cardPicture ? cardPicture : IMAGE.FALLBACK_SHIP
-    return (
-      <div className='card-picture'>
-        <img src={urlPicture} className='card-picture'/>
-      </div>
-    )
+    return <SimpleImage imageUrl={urlPicture} className='card-picture'/>
   }
 
   return (
