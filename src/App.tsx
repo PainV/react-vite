@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import SimpleImage from './atoms/SimpleImage'
-import SimpleText from './atoms/SimpleText'
 import { IMAGE } from './constants'
+import CardHeader from './molecules/CardHeader'
 import { getShips } from './services/graphql'
 
 type Ships = {
@@ -19,12 +19,8 @@ const App = () => {
     getShips().then(setShips)
   })
 
-  const renderTitle = (cardTitle: string) => {
-    return <SimpleText text={cardTitle} className='card-header-title'/>
-  }
-
-  const renderSubtitle = (cardSubtitle: string) => {
-    return <SimpleText text={cardSubtitle} className='card-header-subtitle'/>
+  const renderHeader = (title: string, subtitle: string) => {
+    return <CardHeader title={title} subtitle={subtitle} className='card-header' />
   }
 
   const renderPicture = (cardPicture: string) => {
@@ -36,10 +32,7 @@ const App = () => {
     <div className="App">
       {ships.map((ship) => (
         <div className="ship" key={ship.id}>
-          <div className='card-header'>
-            {renderTitle(ship.name)}
-            {renderSubtitle(ship.type)}
-          </div>
+          {renderHeader(ship.name, ship.type)}
           {renderPicture(ship.image)}
         </div>
       ))}
