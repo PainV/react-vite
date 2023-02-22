@@ -25,3 +25,19 @@ export const getShips = () =>
       `,
     })
     .then((res) => res.data.ships)
+
+export const getShipsDetailed = () =>
+  client
+    .query({
+      query: gql`
+        query Ships {
+          ships {
+            name
+            type
+            image
+            id
+          }
+        }
+      `,
+    })
+    .then((res) => res.data.ships)
